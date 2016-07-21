@@ -1,0 +1,5 @@
+com\niit\shopcartbackend\controller\ProductController.class
+com\niit\shopcartbackend\controller\UserController.class
+com\niit\shopcartbackend\controller\OtherController.class
+com\niit\shopcartbackend\controller\CategoryController.class
+com\niit\shopcartbackend\controller\SupplierController.class

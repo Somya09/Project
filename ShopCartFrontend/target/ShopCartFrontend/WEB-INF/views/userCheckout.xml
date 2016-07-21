@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+   <var name="address" class="com.niit.shopcartbackend.model" />
+   <view-state id="cartDisplay" view="flow/Cart.jsp">
+     <transition on="goToBillingAddress" to="shippingAddDisplay" />
+   </view-state>                       
+   <view-state id="shippingAddressDisplay" view="flow/BillingAddress.jsp" model="address">
+      <transition on="shippingAddressProcessCompleted" to="orderConfirmation" />
+    </view-state>                       
+   <view-state id="orderConfirmation" view="flow/confirmation.jsp">
+      <transition on="validateOrderProcessCompleted" to="billingMode" />
+   </view-state>                       
+   <view-state id="billingMode" view="flow/BillingMode.jsp">
+      <transition on="submitToShippingAddProcess" to="thankYou" />
+   </view-state>  
+   <view-state id="thankYou" view="flow/Thankyou.jsp">
+       <transition on="endState" />
+   </view-state>                   
+   
+   
+   <end-state id="endState" />
+   <view-state id="invalidProcess">
+          <transition to="endState"></transition>
+        </view-state>
+        
+        <end-state id="cancalOrderProcess" view="orderprocesscancelled.jsp"/>
+</flow>
